@@ -62,6 +62,7 @@ For more information about contributing to this repository, see the [Contributio
 ### Join the conversation
 
 If you have any project questions, concerns, or contribution ideas, join our [#pwa slack channel][]!
+<iframe src="https://calendar.google.com/calendar/embed?height=400&amp;wkst=1&amp;bgcolor=%23f40f02&amp;ctz=America%2FChicago&amp;src=NjRvb2FlcmhzcThhanNkdHBnZXBjMWgzM2tAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%238E24AA&amp;mode=WEEK&amp;showTitle=1&amp;showNav=1&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0" style="border:solid 1px #777" width="800" height="400" frameborder="0" scrolling="no"></iframe>
 
 ### Community Maintainers
 
@@ -131,3 +132,5 @@ We would like to recognize the following community members for their efforts on 
 [#pwa slack channel]: https://magentocommeng.slack.com/messages/C71HNKYS2
 [babel]: https://babeljs.io/
 [venia]: https://venia.magento.com/
+
+
