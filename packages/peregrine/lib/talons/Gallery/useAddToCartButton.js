@@ -2,22 +2,28 @@ import { useCallback, useState } from 'react';
 
 export const useAddToCartButton = props => {
     const { item } = props;
-    const [isLoading, setIsLoading] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
+
+    const handleOpenDialog = useCallback(() => {
+        setIsOpen(true);
+    }, [item]);
+
+    const handleCloseDialog = useCallback(() => {
+        setIsOpen(false);
+    }, [setIsOpen]);
 
     const handleAddToCart = useCallback(() => {
-        setIsLoading(true);
-
-        console.log(`Adding ${item.name} to Cart`);
+        console.log(`Opening dialog for ${item.name}`);
 
         // TODO Lets add a mutation to add the item to the cart
 
-        setTimeout(() => {
-            setIsLoading(false);
-        }, 1000);
-    }, [item]);
+        setIsOpen(false);
+    }, [setIsOpen]);
 
     return {
-        isLoading,
+        isOpen,
+        handleOpenDialog,
+        handleCloseDialog,
         handleAddToCart
     };
 };
