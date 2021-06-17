@@ -11,6 +11,12 @@ const InfoIcon = <Icon size={20} src={Info} />;
 export const useCommonToasts = props => {
     const { errorToastProps, loginToastProps, successToastProps } = props;
 
+    /*useToasts A hook that provides access to the toast state and toast api.
+    @kind — function
+    @returns — An array containing objects for the toast state and its API: [../useToastContext#ToastState ToastState, API]
+    */
+
+
     const [, { addToast }] = useToasts();
 
     useEffect(() => {
@@ -18,13 +24,12 @@ export const useCommonToasts = props => {
             addToast({ ...loginToastProps, icon: InfoIcon });
         }
     }, [addToast, loginToastProps]);
-
+    
     useEffect(() => {
         if (successToastProps) {
             addToast({ ...successToastProps, icon: CheckIcon });
         }
     }, [addToast, successToastProps]);
-
     useEffect(() => {
         if (errorToastProps) {
             addToast({ ...errorToastProps, icon: ErrorIcon });

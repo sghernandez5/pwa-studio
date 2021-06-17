@@ -12,6 +12,9 @@ const HeartIcon = <Icon size={20} src={Heart} />;
 
 const GalleryButton = props => {
     const talonProps = useGalleryButton(props);
+
+    // Is this equivalent to const talonProps = {...} 
+    // js destructuring 
     const {
         buttonProps,
         errorToastProps,
@@ -20,12 +23,16 @@ const GalleryButton = props => {
         successToastProps
     } = talonProps;
 
+    // talonProps has access to buttonProps, isSelected.. Classes?
     useCommonToasts({ errorToastProps, loginToastProps, successToastProps });
+    //check if it was  success or not prompt button
 
     const classes = mergeClasses(defaultClasses, props.classes);
+    //
     const buttonClass = isSelected ? classes.root_selected : classes.root;
 
     return (
+        // ... is called object spread
         <button className={buttonClass} {...buttonProps}>
             {HeartIcon}
         </button>
