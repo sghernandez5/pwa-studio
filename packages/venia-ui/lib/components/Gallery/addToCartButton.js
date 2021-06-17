@@ -15,14 +15,22 @@ const GalleryButton = props => {
     const { isLoading, handleAddToCart } = talonProps;
 
     const classes = mergeClasses(defaultClasses, props.classes);
+    /*
+    another way for line 31
+    const buttonProps = {
+        onClick: handleAddToCart,
+        disabled: isLoading
+    }
+    */
 
     return (
         // Lets complete the render here to add a button
         // that will render the ShoppingBagIcon and when clicked
         // should use the handleAddToCart method from the talon
         // checkout galleryButton.ce.js to get an idea
-
-        <div />
+        <button onClick={handleAddToCart} disabled={isLoading}>
+            {ShoppingBagIcon}
+        </button>
     );
 };
 
