@@ -3,11 +3,7 @@ import { shape, string, number } from 'prop-types';
 import { ShoppingBag as ShoppingCartIcon } from 'react-feather';
 import { useAddToCartButton } from '@magento/peregrine/lib/talons/Gallery/useAddToCartButton';
 
-/**
- * TODO
- *
- * Import the dialog component from '../Dialog'
- */
+import Dialog from '../Dialog';
 import { mergeClasses } from '../../classify';
 import Icon from '../Icon';
 
@@ -18,32 +14,30 @@ const ShoppingBagIcon = <Icon size={20} src={ShoppingCartIcon} />;
 const GalleryButton = props => {
     const talonProps = useAddToCartButton(props);
     const {
-        isOpen /* A boolean prop which if true means the dialog is open, and closed if false */,
-        handleOpenDialog /* A function used to open the dialog */,
-        handleCloseDialog /* A function used to close the dialog */,
-        handleAddToCart /* A function used to add an item to the cart */
+        isOpen,
+        handleOpenDialog,
+        handleCloseDialog,
+        handleAddToCart
     } = talonProps;
 
     const classes = mergeClasses(defaultClasses, props.classes);
 
     return (
         <div>
-            {/**
-             * TODO
-             *
-             * Render the dialog component. Render it with required props
-             * to make it look and work like the screenshots describe.
-             *
-             * To know more about what props to use, checkout the "../Dialog/dialog.js"
-             * file to get an idea.
-             */}
-
-            {/**
-             * TODO
-             *
-             * Render the shopping bag button and when the user clicks on the button
-             * open the dialog.
-             */}
+            <Dialog
+                isOpen={isOpen}
+                onCancel={handleCloseDialog}
+                onConfirm={handleAddToCart}
+            >
+                {'Hey this is a dialog'}
+            </Dialog>
+            <button
+                className={classes.root}
+                type="button"
+                onClick={handleOpenDialog}
+            >
+                {ShoppingBagIcon}
+            </button>
         </div>
     );
 };
