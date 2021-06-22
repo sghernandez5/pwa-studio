@@ -2,6 +2,8 @@ import React from 'react';
 import { shape, string, number } from 'prop-types';
 import { ShoppingBag as ShoppingCartIcon } from 'react-feather';
 import { useAddToCartButton } from '@magento/peregrine/lib/talons/Gallery/useAddToCartButton';
+import { useScrollLock } from '@magento/peregrine';
+import Dialog from '../Dialog/dialog';
 
 /**
  * TODO
@@ -21,28 +23,14 @@ const GalleryButton = props => {
         isOpen /* A boolean prop which if true means the dialog is open, and closed if false */,
         handleOpenDialog /* A function used to open the dialog */,
         handleCloseDialog /* A function used to close the dialog */,
-        handleAddToCart /* A function used to add an item to the cart */
+        handleAddToCart /* A function used to add an item to the cart */,
+        isLoading
+        
     } = talonProps;
 
     const classes = mergeClasses(defaultClasses, props.classes);
-    /*
-    another way for line 31
-    const buttonProps = {
-        onClick: handleAddToCart,
-        disabled: isLoading
-    }
-    */
 
     return (
-<<<<<<< HEAD
-        // Lets complete the render here to add a button
-        // that will render the ShoppingBagIcon and when clicked
-        // should use the handleAddToCart method from the talon
-        // checkout galleryButton.ce.js to get an idea
-        <button onClick={handleAddToCart} disabled={isLoading}>
-            {ShoppingBagIcon}
-        </button>
-=======
         <div>
             {/**
              * TODO
@@ -52,7 +40,21 @@ const GalleryButton = props => {
              *
              * To know more about what props to use, checkout the "../Dialog/dialog.js"
              * file to get an idea.
+             * props.cancelText,props.confirmText
+             * props.onConfirm  props.onCancel
+             * props.isOpen
+             * props.shouldShowButtons
              */}
+             <Dialog
+             isOpen = {isOpen}
+             title = "Add to Cart"
+             cancelText = "Cancel"
+             confirmText = "Add"
+             onCancel = {handleCloseDialog}
+             onConfirm = {handleAddToCart}
+             >
+
+             </Dialog>
 
             {/**
              * TODO
@@ -60,8 +62,12 @@ const GalleryButton = props => {
              * Render the shopping bag button and when the user clicks on the button
              * open the dialog.
              */}
+            <button onClick={handleOpenDialog} disabled={isLoading}>
+                {ShoppingBagIcon}
+            </button>
+       
+        
         </div>
->>>>>>> c5b7248e11937558e8dc8119d83abced8abb148e
     );
 };
 
