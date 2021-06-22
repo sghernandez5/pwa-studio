@@ -1,8 +1,26 @@
 import { useCallback, useState } from 'react';
+/**
+ * TODO
+ * 
+ * Import useMutation from apollo. Check how its done in useAddToCartDialog.js
+ */
+
+import { useCartContext } from '../../context/cart';
+
+import operations from './addToCart.gql';
 
 export const useAddToCartButton = props => {
     const { item } = props;
     const [isOpen, setIsOpen] = useState(false);
+
+    const [{ cartId }] = useCartContext();
+
+    /**
+     * TODO
+     * 
+     * use useMutation with operations.ADD_PRODUCT_TO_CART mutation
+     * to get the function which will trigger the mutation call to the backend.
+     */
 
     const handleOpenDialog = useCallback(() => {
         setIsOpen(true);
@@ -12,13 +30,43 @@ export const useAddToCartButton = props => {
         setIsOpen(false);
     }, [setIsOpen]);
 
-    const handleAddToCart = useCallback(() => {
-        console.log(`Opening dialog for ${item.name}`);
+    /**
+     * Helper function to return the variables you will have to
+     * send to the mutation.
+     * 
+     * Will only work on simple products, for instance
+     * https://magento-venia-concept-7bnnn.local.pwadev:8914/default/venia-accessories.html?page=1
+     */
+    const getMutationVariables = useCallback(() => {
+        return {
+            cartId,
+            cartItem: {
+                quantity: 1,
+                selected_options: [],
+                sku: item.sku
+            }
+        };
+    }, [cartId, item]);
 
-        // TODO Lets add a mutation to add the item to the cart
+    const handleAddToCart = useCallback(async () => {
+        const variables = getMutationVariables();
 
-        setIsOpen(false);
-    }, [setIsOpen]);
+        try {
+            /**
+             * TODO
+             * 
+             * use the variables object and make the mutation call to
+             * add an item to the cart. Checkout useAddToCartDialog.js
+             * how it is done.
+             * 
+             * Here we are only talking about making the mutation call.
+             */
+
+            setIsOpen(false);
+        } catch (error) {
+            console.error(error);
+        }
+    }, [setIsOpen, getMutationVariables]);
 
     return {
         isOpen,
