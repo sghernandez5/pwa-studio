@@ -1,4 +1,6 @@
 import { useCallback, useState } from 'react';
+import { useMutation, useQuery } from '@apollo/client';
+
 /**
  * TODO
  * 
@@ -21,6 +23,7 @@ export const useAddToCartButton = props => {
      * use useMutation with operations.ADD_PRODUCT_TO_CART mutation
      * to get the function which will trigger the mutation call to the backend.
      */
+    const [addToCart,{data}] = useMutation(operations.ADD_PRODUCT_TO_CART); //added
 
     const handleOpenDialog = useCallback(() => {
         setIsOpen(true);
@@ -61,6 +64,10 @@ export const useAddToCartButton = props => {
              * 
              * Here we are only talking about making the mutation call.
              */
+            // make mutation call?
+            await addToCart({
+              variables
+            })
 
             setIsOpen(false);
         } catch (error) {
