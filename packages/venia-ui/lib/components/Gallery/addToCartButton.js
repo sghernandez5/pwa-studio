@@ -5,7 +5,6 @@ import { useAddToCartButton } from '@magento/peregrine/lib/talons/Gallery/useAdd
 import { useScrollLock } from '@magento/peregrine';
 import Dialog from '../Dialog/dialog';
 
-import Dialog from '../Dialog';
 import { mergeClasses } from '../../classify';
 import Icon from '../Icon';
 
